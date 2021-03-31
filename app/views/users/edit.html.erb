@@ -1,0 +1,17 @@
+<% if @user.errors.any? %>
+ <%= @user.errors.count %>error prohibited this obj from being saved:
+  <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<h2>User info</h2>
+<%= form_with model:@user,local:true do |f| %>
+
+<p>Name</p>
+<%= f.text_field :name %>
+<p>Image</p>
+<%= f.attachment_field :profile_image %>
+<p>introduction</p>
+<%= f.text_area :introduction %>
+<%= f.submit 'Update User' %>
+<% end %>
